@@ -40,7 +40,7 @@
     <link href="http://Sebastian.com/2017/02/15/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/"/>
     <id>http://Sebastian.com/2017/02/15/虚拟机启动失败/</id>
     <published>2017-02-15T07:47:15.000Z</published>
-    <updated>2017-02-15T08:13:35.158Z</updated>
+    <updated>2017-02-15T08:18:48.032Z</updated>
     
     <content type="html"><![CDATA[<p>机器宕机，强制重起后，打开vmware启动虚拟机显示如下错误：<br><img src="http://p1.bpimg.com/567571/68b9b1e2582c5d71.png" alt=""><br>处理该错误的方式是由于强制退出，在虚拟机的文件保存路径下生成了对应名称的lck文件。<br><img src="http://p1.bpimg.com/567571/73ec76eff2f2222b.png" alt=""><br>需要作的是<font color="red"><strong>删除目录下的lck目录或文件</strong></font>，确保在虚拟机镜像文件目录下不存在lck文件。<br>删除/root/vmware/windows 7 x64目录下的lck文件后，再启动该windows7机器即可启动。<br><img src="http://p1.bpimg.com/567571/e02a2685f1a73ad8.png" alt=""></p>
 ]]></content>
@@ -53,26 +53,6 @@
     
     
       <category term="lck" scheme="http://Sebastian.com/tags/lck/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>text</title>
-    <link href="http://Sebastian.com/2017/02/15/%E5%BC%80%E5%8D%9A%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
-    <id>http://Sebastian.com/2017/02/15/开博第一天/</id>
-    <published>2017-02-15T02:27:52.000Z</published>
-    <updated>2017-02-15T06:12:18.681Z</updated>
-    
-    <content type="html"><![CDATA[<p>您好，欢迎来到我的个人博客!<br>17年换了新公司，重新开始，打算记录下未来的点点滴滴，以前都是习惯于使用evernote做个人笔记。现在打算转到blog上来作个人知识整理。希望自己能够长时间的坚持作一件事情，go on！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;您好，欢迎来到我的个人博客!&lt;br&gt;17年换了新公司，重新开始，打算记录下未来的点点滴滴，以前都是习惯于使用evernote做个人笔记。现在打算转到blog上来作个人知识整理。希望自己能够长时间的坚持作一件事情，go on！&lt;/p&gt;
-
-    
-    </summary>
-    
     
   </entry>
   
