@@ -182,7 +182,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh-advisor-design/">ssh advisor design</a></li></ul>
                     </div>
                 </section>
                 
@@ -258,6 +258,153 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-ssh监控的设计实现.md" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/15/ssh监控的设计实现.md/" class="article-date">
+      <time datetime="2017-02-15T09:47:33.238Z" itemprop="datePublished">2017-02-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+
+<p>title: ssh监控的设计实现
+date: 2017-02-15 16:57:54</p>
+
+<h2>tags: ssh advisor design</h2>
+
+<p><ol>
+<li>##调研目标
+旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。</li>
+<li>##实验环境准备
+一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。</li>
+<li>##实验步骤
+###实验一
+-首先从A节点ssh到B节点，A->B,在B节点的/var/log/secure文件会生成两条日志记录：</li></ol></p>
+
+<blockquote>
+  <p>Feb  8 17:47:48 localhost sshd[12643]: Accepted password for root from 192.168.117.1 port 43171 ssh2
+  Feb  8 17:47:48 localhost sshd[12643]: pam_unix(sshd:session): session opened for user root by (uid=0)
+</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-ssh监控的设计实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/15/ssh监控的设计实现/" class="article-date">
+      <time datetime="2017-02-15T08:57:54.000Z" itemprop="datePublished">2017-02-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/15/ssh监控的设计实现/">ssh监控的设计实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li>##调研目标<br>旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。</li>
+<li>##实验环境准备<br>一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。</li>
+<li><p>##实验步骤<br>###实验一</p>
+<ul>
+<li>首先从A节点ssh到B节点，A-&gt;B,在B节点的/var/log/secure文件会生成两条日志记录：<blockquote>
+<p> Feb  8 17:47:48 localhost sshd[12643]: Accepted password for root from 192.168.117.1 port 43171 ssh2<br> Feb  8 17:47:48 localhost sshd[12643]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
+</blockquote>
+</li>
+<li>然后再ssh到C节点，A-&gt;B-&gt;C，在C节点的/var/log/secure文件会生成以下两条日志记录：<blockquote>
+<p> Feb  8 17:59:48 localhost sshd[9918]: Accepted password for root from 192.168.117.133 port 45169 ssh2<br> Feb  8 17:59:48 localhost sshd[9918]: pam_unix(sshd:session): session opened for user root by (uid=0)<br>如果同时在B上ssh到C，即存在A-&gt;B-&gt;C,B-&gt;C两条链路，那么根据现有的信息无法判断真实的连接到C上的情况是A-&gt;B-&gt;C,B-&gt;C还是A-&gt;B,B-&gt;C,B-&gt;C。在/var/run/utmp文件中保存有用户的登陆信息以及当前正在进行的操作，该文件是一个二进制文件，使用w命令能够解析获取到文件信息。例如存在一条A-&gt;B-&gt;C的链路，那么在B节点上通过w命令可以查看到如下信息：<br>USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>root     pts/0    192.168.117.1    09:34    1:51   0.02s  0.00s ssh root@192.168.117.134<br>由此可以确定一个节点的两端连接节点。<br>###实验二</p>
+<ul>
+<li>存在A，B，C，D四个节点，其中A节点上从w命令中获取到存在A-&gt;A, A-&gt;B两条链路；B节点上存在A-&gt;B-&gt;C,B-&gt;C两条链路；C节点上存在B-&gt;C,C-&gt;D,B-&gt;C-&gt;D三条链路；D节点上存在C-&gt;D,C-&gt;D两条链路。从而根据以上的信息，可以推断出该四个节点的ssh拓扑关系如下：<br><img src="http://i1.piimg.com/567571/caa1b024c3929075.png" alt=""><font color="red">其中B-&gt;C-&gt;D链路无法确定是A-&gt;B-&gt;C-&gt;D还是B-&gt;C-&gt;D。</font></li>
+</ul>
+</blockquote>
+</li>
+<li>##算法实现<br>4.1 ###在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh-advisor-design/">ssh advisor design</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-markdown简明教程" class="article article-type-post" itemscope itemprop="blogPost">
   
