@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Sebastian.com/"/>
-  <updated>2017-02-15T02:29:00.044Z</updated>
+  <updated>2017-02-15T06:02:52.413Z</updated>
   <id>http://Sebastian.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://Sebastian.com/2017/02/15/markdown%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
+    <id>http://Sebastian.com/2017/02/15/markdown简明教程/</id>
+    <published>2017-02-15T06:04:52.197Z</published>
+    <updated>2017-02-15T06:02:52.413Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="markdown简明教程"><a href="#markdown简明教程" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h1><p>标签（空格分隔）： markdown</p>
+<hr>
+<h3 id="markdown简明语法教程-（https-www-zybuluo-com-mdeditor-url-https-www-zybuluo-com-static-editor-md-help-markdown）"><a href="#markdown简明语法教程-（https-www-zybuluo-com-mdeditor-url-https-www-zybuluo-com-static-editor-md-help-markdown）" class="headerlink" title="[markdown简明语法教程]（https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown）"></a>[markdown简明语法教程]（<a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown）" target="_blank" rel="external">https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown）</a></h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;markdown简明教程&quot;&gt;&lt;a href=&quot;#markdown简明教程&quot; class=&quot;headerlink&quot; title=&quot;markdown简明教程&quot;&gt;&lt;/a&gt;markdown简明教程&lt;/h1&gt;&lt;p&gt;标签（空格分隔）： markdown&lt;/p&gt;
+&lt;hr&gt;
+&lt;h
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>text</title>
