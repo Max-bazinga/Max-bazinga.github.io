@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Sebastian.com/"/>
-  <updated>2017-02-16T01:02:37.161Z</updated>
+  <updated>2017-02-15T10:15:13.813Z</updated>
   <id>http://Sebastian.com/</id>
   
   <author>
@@ -14,26 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>test</title>
-    <link href="http://Sebastian.com/2017/02/16/test/"/>
-    <id>http://Sebastian.com/2017/02/16/test/</id>
-    <published>2017-02-16T01:02:04.000Z</published>
-    <updated>2017-02-16T01:02:37.161Z</updated>
-    
-    <content type="html"><![CDATA[<p>testing work on different computer</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;testing work on different computer&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>ssh监控的设计实现</title>
