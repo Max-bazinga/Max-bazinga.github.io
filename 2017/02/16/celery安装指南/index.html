@@ -15,12 +15,28 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sebastian">
-<meta property="og:url" content="http://Sebastian.com/tags/markdown/index.html">
+<meta name="description" content="Celery作为一个处理消息的中间件，主要由生产者，broker，消费者三部分组成。其中broker作为一个消息转运者的角色存在，将生产者产生的消息转送给消费者。而作为消息运输者的broker目前最常用的有RabbitMQ，Redis等。这里选用RabbitMQ，下面介绍RabbitMQ的安装方式：
+
+首先需要安装erlang
+
+1.1 添加源 wget https://packages.erla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="celery安装指南">
+<meta property="og:url" content="http://Sebastian.com/2017/02/16/celery安装指南/index.html">
 <meta property="og:site_name" content="Sebastian">
+<meta property="og:description" content="Celery作为一个处理消息的中间件，主要由生产者，broker，消费者三部分组成。其中broker作为一个消息转运者的角色存在，将生产者产生的消息转送给消费者。而作为消息运输者的broker目前最常用的有RabbitMQ，Redis等。这里选用RabbitMQ，下面介绍RabbitMQ的安装方式：
+
+首先需要安装erlang
+
+1.1 添加源 wget https://packages.erla">
+<meta property="og:updated_time" content="2017-02-16T07:06:51.781Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sebastian">
+<meta name="twitter:title" content="celery安装指南">
+<meta name="twitter:description" content="Celery作为一个处理消息的中间件，主要由生产者，broker，消费者三部分组成。其中broker作为一个消息转运者的角色存在，将生产者产生的消息转送给消费者。而作为消息运输者的broker目前最常用的有RabbitMQ，Redis等。这里选用RabbitMQ，下面介绍RabbitMQ的安装方式：
+
+首先需要安装erlang
+
+1.1 添加源 wget https://packages.erla">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +68,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: markdown | Sebastian</title>
+<title>celery安装指南 | Sebastian</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,9 +78,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -252,56 +268,194 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-celery安装指南" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/15/markdown简明教程/" class="archive-article-date">
-      <time datetime="2017-02-15T08:17:35.000Z" itemprop="datePublished">02-15</time>
+    <div class="article-meta">
+      <a href="/2017/02/16/celery安装指南/" class="article-date">
+      <time datetime="2017-02-16T06:22:00.000Z" itemprop="datePublished">2017-02-16</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/15/markdown简明教程/">markdown简明教程</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      celery安装指南
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/celery/">celery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/">install</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Celery作为一个处理消息的中间件，主要由生产者，broker，消费者三部分组成。其中broker作为一个消息转运者的角色存在，将生产者产生的消息转送给消费者。而作为消息运输者的broker目前最常用的有RabbitMQ，Redis等。<br>这里选用RabbitMQ，下面介绍RabbitMQ的安装方式：</p>
+<ol>
+<li><p>首先需要安装erlang</p>
+<blockquote>
+<p>1.1 添加源<br> wget <a href="https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm" target="_blank" rel="external">https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm</a><br> rpm -Uvh erlang-solutions-1.0-1.noarch.rpm<br> 1.2 安装erlang<br> sudo yum install erlang</p>
+</blockquote>
+</li>
+<li><p>安装RabbitMQ Server</p>
+<blockquote>
+<p>rpm –import <a href="https://www.rabbitmq.com/rabbitmq-release-signing-key.asc" target="_blank" rel="external">https://www.rabbitmq.com/rabbitmq-release-signing-key.asc</a><br> yum install rabbitmq-server-3.6.6-1.noarch.rpm</p>
+</blockquote>
+</li>
+<li><p>启动RabbitMQ Server</p>
+<blockquote>
+<p>随系统启动，以管理与身份运行如下命令：<br> chkconfig rabbitmq-server<br> 手动启动或关闭，使用如下命令：<br> /sbin/service rabbitmq-server stop/start</p>
+</blockquote>
+</li>
+<li><p>使用pip安装celery</p>
+<blockquote>
+<p>如果没有安装pip，请先安装pip：<br> wget “<a href="https://pypi.python.org/packages/source/p/pip/pip-1.5.4.tar.gz#md5=834b2904f92d46aaa333267fb1c922bb" target="_blank" rel="external">https://pypi.python.org/packages/source/p/pip/pip-1.5.4.tar.gz#md5=834b2904f92d46aaa333267fb1c922bb</a>“ –no-check-certificate<br> python setup.py install<br> pip install celery</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/16/celery安装指南/">celery安装指南</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Sebastian</a></p>
+        <p><span>发布时间:</span>2017-02-16, 14:22:00</p>
+        <p><span>最后更新:</span>2017-02-16, 15:06:51</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/16/celery安装指南/" title="celery安装指南">http://Sebastian.com/2017/02/16/celery安装指南/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://Sebastian.com/2017/02/16/celery安装指南/　　作者: Sebastian" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/02/16/celery源码阅读/">
+                    celery源码阅读
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/15/ssh监控的设计实现/">
+                    ssh监控的设计实现
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"celery安装指南　| Sebastian　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/16/celery源码阅读/" title="上一篇: celery源码阅读">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/15/ssh监控的设计实现/" title="下一篇: ssh监控的设计实现">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/celery源码阅读/">celery源码阅读</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/celery安装指南/">celery安装指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/ssh监控的设计实现/">ssh监控的设计实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/markdown简明教程/">markdown简明教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/虚拟机启动失败/">虚拟机启动失败</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

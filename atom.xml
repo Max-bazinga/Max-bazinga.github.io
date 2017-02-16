@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Sebastian.com/"/>
-  <updated>2017-02-16T05:55:32.587Z</updated>
+  <updated>2017-02-16T09:25:39.216Z</updated>
   <id>http://Sebastian.com/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>celery源码阅读</title>
+    <link href="http://Sebastian.com/2017/02/16/celery%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    <id>http://Sebastian.com/2017/02/16/celery源码阅读/</id>
+    <published>2017-02-16T08:09:48.000Z</published>
+    <updated>2017-02-16T09:25:39.216Z</updated>
+    
+    <content type="html"><![CDATA[<p>程序入口<strong>main</strong>.py</p>
+<p>##使用技巧：<br>M1：在以行语句中使用if else，例如：<br>   &gt;</p>
+<p>##问题列表：<br>Q1：<strong>main</strong>文件的作用？<br>Q2：<strong>future</strong>文件的作用？<br>Q3：使用cls(参数)初始化一个类对象？</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;程序入口&lt;strong&gt;main&lt;/strong&gt;.py&lt;/p&gt;
+&lt;p&gt;##使用技巧：&lt;br&gt;M1：在以行语句中使用if else，例如：&lt;br&gt;   &amp;gt;&lt;/p&gt;
+&lt;p&gt;##问题列表：&lt;br&gt;Q1：&lt;strong&gt;main&lt;/strong&gt;文件的作用？&lt;br&gt;Q2：&lt;
+    
+    </summary>
+    
+    
+      <category term="celery" scheme="http://Sebastian.com/tags/celery/"/>
+    
+      <category term="python" scheme="http://Sebastian.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>celery安装指南</title>
+    <link href="http://Sebastian.com/2017/02/16/celery%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
+    <id>http://Sebastian.com/2017/02/16/celery安装指南/</id>
+    <published>2017-02-16T06:22:00.000Z</published>
+    <updated>2017-02-16T07:06:51.781Z</updated>
+    
+    <content type="html"><![CDATA[<p>Celery作为一个处理消息的中间件，主要由生产者，broker，消费者三部分组成。其中broker作为一个消息转运者的角色存在，将生产者产生的消息转送给消费者。而作为消息运输者的broker目前最常用的有RabbitMQ，Redis等。<br>这里选用RabbitMQ，下面介绍RabbitMQ的安装方式：</p>
+<ol>
+<li><p>首先需要安装erlang</p>
+<blockquote>
+<p>1.1 添加源<br> wget <a href="https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm" target="_blank" rel="external">https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm</a><br> rpm -Uvh erlang-solutions-1.0-1.noarch.rpm<br> 1.2 安装erlang<br> sudo yum install erlang</p>
+</blockquote>
+</li>
+<li><p>安装RabbitMQ Server</p>
+<blockquote>
+<p>rpm –import <a href="https://www.rabbitmq.com/rabbitmq-release-signing-key.asc" target="_blank" rel="external">https://www.rabbitmq.com/rabbitmq-release-signing-key.asc</a><br> yum install rabbitmq-server-3.6.6-1.noarch.rpm</p>
+</blockquote>
+</li>
+<li><p>启动RabbitMQ Server</p>
+<blockquote>
+<p>随系统启动，以管理与身份运行如下命令：<br> chkconfig rabbitmq-server<br> 手动启动或关闭，使用如下命令：<br> /sbin/service rabbitmq-server stop/start</p>
+</blockquote>
+</li>
+<li><p>使用pip安装celery</p>
+<blockquote>
+<p>如果没有安装pip，请先安装pip：<br> wget “<a href="https://pypi.python.org/packages/source/p/pip/pip-1.5.4.tar.gz#md5=834b2904f92d46aaa333267fb1c922bb" target="_blank" rel="external">https://pypi.python.org/packages/source/p/pip/pip-1.5.4.tar.gz#md5=834b2904f92d46aaa333267fb1c922bb</a>“ –no-check-certificate<br> python setup.py install<br> pip install celery</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Celery作为一个处理消息的中间件，主要由生产者，broker，消费者三部分组成。其中broker作为一个消息转运者的角色存在，将生产者产生的消息转送给消费者。而作为消息运输者的broker目前最常用的有RabbitMQ，Redis等。&lt;br&gt;这里选用RabbitMQ，下
+    
+    </summary>
+    
+    
+      <category term="celery" scheme="http://Sebastian.com/tags/celery/"/>
+    
+      <category term="install" scheme="http://Sebastian.com/tags/install/"/>
+    
+  </entry>
   
   <entry>
     <title>ssh监控的设计实现</title>
