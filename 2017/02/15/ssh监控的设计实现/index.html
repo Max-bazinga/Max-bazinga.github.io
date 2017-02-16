@@ -32,7 +32,15 @@
 实验步骤实验一
 首先从A节点ssh到B节点，A-&amp;gt;B,在B节点的/var/log/s">
 <meta property="og:image" content="http://i1.piimg.com/567571/caa1b024c3929075.png">
-<meta property="og:updated_time" content="2017-02-15T10:15:13.813Z">
+<meta property="og:image" content="http://i1.piimg.com/567571/50d18170db2bb3ee.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/03cce7be8909d3de.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/f73ab767c5149c43.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/4d7074d67df4b3fe.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/4d7074d67df4b3fe.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/640c62a9c3ff500c.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/20519a7f1ab75f2f.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/a59f90843e597fa5.png">
+<meta property="og:updated_time" content="2017-02-16T05:55:32.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh监控的设计实现">
 <meta name="twitter:description" content="调研目标旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。
@@ -314,36 +322,40 @@
       
           
         <ol>
-<li><h2 id="调研目标"><a href="#调研目标" class="headerlink" title="调研目标"></a>调研目标</h2><p>旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。</p>
+<li><h4 id="调研目标"><a href="#调研目标" class="headerlink" title="调研目标"></a>调研目标</h4><p>旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。</p>
 </li>
-<li><h2 id="实验环境准备"><a href="#实验环境准备" class="headerlink" title="实验环境准备"></a>实验环境准备</h2><p>一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。</p>
+<li><h4 id="实验环境准备"><a href="#实验环境准备" class="headerlink" title="实验环境准备"></a>实验环境准备</h4><p>一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。</p>
 </li>
-<li><h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><ul>
-<li><p>首先从A节点ssh到B节点，A-&gt;B,在B节点的/var/log/secure文件会生成两条日志记录：</p>
-<blockquote>
-<p> Feb  8 17:47:48 localhost sshd[12643]: Accepted password for root from 192.168.117.1 port 43171 ssh2<br>Feb  8 17:47:48 localhost sshd[12643]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
-</blockquote>
-</li>
-<li><p>然后再ssh到C节点，A-&gt;B-&gt;C，在C节点的/var/log/secure文件会生成以下两条日志记录：</p>
-<blockquote>
-<p> Feb  8 17:59:48 localhost sshd[9918]: Accepted password for root from 192.168.117.133 port 45169 ssh2<br>Feb  8 17:59:48 localhost sshd[9918]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
-</blockquote>
-<p>如果同时在B上ssh到C，即存在A-&gt;B-&gt;C,B-&gt;C两条链路，那么根据现有的信息无法判断真实的连接到C上的情况是A-&gt;B-&gt;C,B-&gt;C还是A-&gt;B,B-&gt;C,B-&gt;C。在/var/run/utmp文件中保存有用户的登陆信息以及当前正在进行的操作，该文件是一个二进制文件，使用w命令能够解析获取到文件信息。例如存在一条A-&gt;B-&gt;C的链路，那么在B节点上通过w命令可以查看到如下信息：</p>
-</li>
+<li><h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><ul>
+<li>首先从A节点ssh到B节点，A-&gt;B,在B节点的/var/log/secure文件会生成两条日志记录：</li>
 </ul>
+<blockquote>
+<p> Feb  8 17:47:48 localhost sshd[12643]: Accepted password for root from 192.168.117.1 port 43171 ssh2<br>   Feb  8 17:47:48 localhost sshd[12643]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
+</blockquote>
+<ul>
+<li>然后再ssh到C节点，A-&gt;B-&gt;C，在C节点的/var/log/secure文件会生成以下两条日志记录：</li>
+</ul>
+<blockquote>
+<p> Feb  8 17:59:48 localhost sshd[9918]: Accepted password for root from 192.168.117.133 port 45169 ssh2<br>   Feb  8 17:59:48 localhost sshd[9918]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
+</blockquote>
+<p>   如果同时在B上ssh到C，即存在A-&gt;B-&gt;C,B-&gt;C两条链路，那么根据现有的信息无法判断真实的连接到C上的情况是A-&gt;B-&gt;C,B-&gt;C还是A-&gt;B,B-&gt;C,B-&gt;C。在/var/run/utmp文件中保存有用户的登陆信息以及当前正在进行的操作，该文件是一个二进制文件，使用w命令能够解析获取到文件信息。例如存在一条A-&gt;B-&gt;C的链路，那么在B节点上通过w命令可以查看到如下信息：</p>
 <blockquote>
 <p> USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT<br> root     pts/0    192.168.117.1    09:34    1:51   0.02s  0.00s ssh root@192.168.117.134</p>
 </blockquote>
-<p>可以确定一个节点的两端连接节点。</p>
+<p>  因此，可以推断出存在一条A-&gt;B-&gt;C的链路，但是没有办法确定这条链路中各节点使用的tty号。</p>
 <h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><ul>
 <li>存在A，B，C，D四个节点，其中A节点上从w命令中获取到存在A-&gt;A, A-&gt;B两条链路；B节点上存在A-&gt;B-&gt;C,B-&gt;C两条链路；C节点上存在B-&gt;C,C-&gt;D,B-&gt;C-&gt;D三条链路；D节点上存在C-&gt;D,C-&gt;D两条链路。从而根据以上的信息，可以推断出该四个节点的ssh拓扑关系如下：<br><img src="http://i1.piimg.com/567571/caa1b024c3929075.png" alt=""></li>
 </ul>
+<p><font color="red">其中B-&gt;C-&gt;D链路无法确定是A-&gt;B-&gt;C-&gt;D还是B-&gt;C-&gt;D。</font><br><strong><font color="red">存在无法判断链路两端是建立在机器的哪个tty上的问题？</font></strong><br>经过对ssh协议的研究发现，在ssh连接建立过程的密钥交换阶段，服务器会向客户端发送一个包，这个包的内容包含自己的RSA主机密钥的公钥部分，服务密钥的公钥部分，支持的加密算法，支持的认证方法，次协议版本标志，以及一个64位的随即数(cookie)。客户端收到包后，根据这两把密钥和被称为cookie的64位随机数计算出会话session_id。服务器也是根据发给客户端的主机公钥，服务公钥，和64位随机数计算出会话ID，因此两边的会话ID是一致的。因此根据会话ID可以确立两边建立的一条会话链路。<br>session_id的生成算法如下:<br><img src="http://i1.piimg.com/567571/50d18170db2bb3ee.png" alt=""><br>在sshd.c服务器程序下增加一条日志输出logit，可以打印出在服务器端生成的session_id。由于存在ssh1和ssh2两个协议，因此需要增加两条logit日志。<br><img src="http://p1.bqimg.com/567571/03cce7be8909d3de.png" alt=""><br><img src="http://p1.bqimg.com/567571/f73ab767c5149c43.png" alt=""><br>确定了session_id后还需要确定与session_id相绑定的tty号，在服务器sshd的源代码上增加两条logit日志，输出连接及服务器端tty信息：<br><img src="http://i1.piimg.com/567571/4d7074d67df4b3fe.png" alt=""><br>在客户端增加两条logit，输出客户端session_id和tty信息：<br><img src="http://i1.piimg.com/567571/4d7074d67df4b3fe.png" alt=""><br><img src="http://p1.bpimg.com/567571/640c62a9c3ff500c.png" alt=""></p>
+<p>进行以下实验来验证<em>根据session_id来唯一确定一条链路的两端</em>：</p>
+<h3 id="实验三"><a href="#实验三" class="headerlink" title="实验三"></a>实验三</h3><ul>
+<li><p>软件版本： openssh6.6, kylin3.0</p>
+<p>编译修改后的openssh源代码，生成新的sshd和ssh。使用下面的命令启动服务器程序，重定向日志到/tmp/sshd.log。</p>
+<blockquote>
+<p>sshd需要以绝对路径启动：<br> /home/zhanghao/openssh-6.6/openssh-6.6p1/sshd -E /tmp/sshd.log</p>
+</blockquote>
+<p>使用ssh连接服务器，其中client端输出如下日志信息：<br><img src="http://i1.piimg.com/567571/20519a7f1ab75f2f.png" alt=""><br>服务器端输出如下日志信息：<br><img src="http://p1.bqimg.com/567571/a59f90843e597fa5.png" alt=""><br>在对日志进行分析处理的过程中，比较两端的session_id信息，可以确定有客户端的tty2连接到了服务器的tty4。由于是在同一台机器上进行的连接，因此是从127.0.0.1到127.0.0.1。从而可以解决之前无法确定链路是A-&gt;B-&gt;C-&gt;D，还是B-&gt;C-&gt;D的问题。</p>
 </li>
-</ol>
-<p><font color="red">其中B-&gt;C-&gt;D链路无法确定是A-&gt;B-&gt;C-&gt;D还是B-&gt;C-&gt;D。</font></p>
-<ol>
-<li><h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
-<li><h3 id="在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果"><a href="#在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果" class="headerlink" title="在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:"></a>在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:</h3></li>
 </ul>
 </li>
 </ol>
@@ -358,7 +370,7 @@
         <p><span>本文标题:</span><a href="/2017/02/15/ssh监控的设计实现/">ssh监控的设计实现</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sebastian</a></p>
         <p><span>发布时间:</span>2017-02-15, 16:57:54</p>
-        <p><span>最后更新:</span>2017-02-15, 18:15:13</p>
+        <p><span>最后更新:</span>2017-02-16, 13:55:32</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/15/ssh监控的设计实现/" title="ssh监控的设计实现">http://Sebastian.com/2017/02/15/ssh监控的设计实现/</a>
             <span class="copy-path" data-clipboard-text="原文: http://Sebastian.com/2017/02/15/ssh监控的设计实现/　　作者: Sebastian" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -388,7 +400,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调研目标"><span class="toc-number">1.</span> <span class="toc-text">调研目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验环境准备"><span class="toc-number">2.</span> <span class="toc-text">实验环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验步骤"><span class="toc-number">3.</span> <span class="toc-text">实验步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验一"><span class="toc-number">3.1.</span> <span class="toc-text">实验一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验二"><span class="toc-number">3.2.</span> <span class="toc-text">实验二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法实现"><span class="toc-number">4.</span> <span class="toc-text">算法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果"><span class="toc-number">4.1.</span> <span class="toc-text">在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#调研目标"><span class="toc-number">1.</span> <span class="toc-text">调研目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验环境准备"><span class="toc-number">2.</span> <span class="toc-text">实验环境准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实验步骤"><span class="toc-number">3.</span> <span class="toc-text">实验步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验一"><span class="toc-number"></span> <span class="toc-text">实验一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验二"><span class="toc-number"></span> <span class="toc-text">实验二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验三"><span class="toc-number"></span> <span class="toc-text">实验三</span></a>
         
     </div>
     <style>
