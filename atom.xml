@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sebastian</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://Sebastian.com/"/>
+  <updated>2017-02-15T10:00:18.852Z</updated>
+  <id>http://Sebastian.com/</id>
+  
+  <author>
+    <name>Sebastian</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ssh监控的设计实现</title>
+    <link href="http://Sebastian.com/2017/02/15/ssh%E7%9B%91%E6%8E%A7%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://Sebastian.com/2017/02/15/ssh监控的设计实现/</id>
+    <published>2017-02-15T08:57:54.000Z</published>
+    <updated>2017-02-15T10:00:18.852Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>##调研目标<br>旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。</li>
+<li>##实验环境准备<br>一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。</li>
+<li><p>##实验步骤<br>###实验一</p>
+<ul>
+<li>首先从A节点ssh到B节点，A-&gt;B,在B节点的/var/log/secure文件会生成两条日志记录：<blockquote>
+<p> Feb  8 17:47:48 localhost sshd[12643]: Accepted password for root from 192.168.117.1 port 43171 ssh2<br> Feb  8 17:47:48 localhost sshd[12643]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
+</blockquote>
+</li>
+<li>然后再ssh到C节点，A-&gt;B-&gt;C，在C节点的/var/log/secure文件会生成以下两条日志记录：<blockquote>
+<p> Feb  8 17:59:48 localhost sshd[9918]: Accepted password for root from 192.168.117.133 port 45169 ssh2<br> Feb  8 17:59:48 localhost sshd[9918]: pam_unix(sshd:session): session opened for user root by (uid=0)<br>如果同时在B上ssh到C，即存在A-&gt;B-&gt;C,B-&gt;C两条链路，那么根据现有的信息无法判断真实的连接到C上的情况是A-&gt;B-&gt;C,B-&gt;C还是A-&gt;B,B-&gt;C,B-&gt;C。在/var/run/utmp文件中保存有用户的登陆信息以及当前正在进行的操作，该文件是一个二进制文件，使用w命令能够解析获取到文件信息。例如存在一条A-&gt;B-&gt;C的链路，那么在B节点上通过w命令可以查看到如下信息：<br>USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>root     pts/0    192.168.117.1    09:34    1:51   0.02s  0.00s ssh root@192.168.117.134<br>由此可以确定一个节点的两端连接节点。<br>###实验二</p>
+<ul>
+<li>存在A，B，C，D四个节点，其中A节点上从w命令中获取到存在A-&gt;A, A-&gt;B两条链路；B节点上存在A-&gt;B-&gt;C,B-&gt;C两条链路；C节点上存在B-&gt;C,C-&gt;D,B-&gt;C-&gt;D三条链路；D节点上存在C-&gt;D,C-&gt;D两条链路。从而根据以上的信息，可以推断出该四个节点的ssh拓扑关系如下：<br><img src="http://i1.piimg.com/567571/caa1b024c3929075.png" alt=""><font color="red">其中B-&gt;C-&gt;D链路无法确定是A-&gt;B-&gt;C-&gt;D还是B-&gt;C-&gt;D。</font></li>
+</ul>
+</blockquote>
+</li>
+<li>##算法实现<br>4.1 ###在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;##调研目标&lt;br&gt;旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。&lt;/li&gt;
+&lt;li&gt;##实验环境准备&lt;br&gt;一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1)
+    
+    </summary>
+    
+    
+      <category term="ssh advisor design" scheme="http://Sebastian.com/tags/ssh-advisor-design/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown简明教程</title>
+    <link href="http://Sebastian.com/2017/02/15/markdown%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
+    <id>http://Sebastian.com/2017/02/15/markdown简明教程/</id>
+    <published>2017-02-15T08:17:35.000Z</published>
+    <updated>2017-02-15T08:19:55.108Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="markdown简明语法教程-（https-www-zybuluo-com-cmd-）"><a href="#markdown简明语法教程-（https-www-zybuluo-com-cmd-）" class="headerlink" title="[markdown简明语法教程]（https://www.zybuluo.com/cmd/）"></a>[markdown简明语法教程]（<a href="https://www.zybuluo.com/cmd/）" target="_blank" rel="external">https://www.zybuluo.com/cmd/）</a></h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;markdown简明语法教程-（https-www-zybuluo-com-cmd-）&quot;&gt;&lt;a href=&quot;#markdown简明语法教程-（https-www-zybuluo-com-cmd-）&quot; class=&quot;headerlink&quot; title=&quot;[markd
+    
+    </summary>
+    
+    
+      <category term="markdown" scheme="http://Sebastian.com/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚拟机启动失败</title>
+    <link href="http://Sebastian.com/2017/02/15/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/"/>
+    <id>http://Sebastian.com/2017/02/15/虚拟机启动失败/</id>
+    <published>2017-02-15T07:47:15.000Z</published>
+    <updated>2017-02-15T08:18:48.032Z</updated>
+    
+    <content type="html"><![CDATA[<p>机器宕机，强制重起后，打开vmware启动虚拟机显示如下错误：<br><img src="http://p1.bpimg.com/567571/68b9b1e2582c5d71.png" alt=""><br>处理该错误的方式是由于强制退出，在虚拟机的文件保存路径下生成了对应名称的lck文件。<br><img src="http://p1.bpimg.com/567571/73ec76eff2f2222b.png" alt=""><br>需要作的是<font color="red"><strong>删除目录下的lck目录或文件</strong></font>，确保在虚拟机镜像文件目录下不存在lck文件。<br>删除/root/vmware/windows 7 x64目录下的lck文件后，再启动该windows7机器即可启动。<br><img src="http://p1.bpimg.com/567571/e02a2685f1a73ad8.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;机器宕机，强制重起后，打开vmware启动虚拟机显示如下错误：&lt;br&gt;&lt;img src=&quot;http://p1.bpimg.com/567571/68b9b1e2582c5d71.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;处理该错误的方式是由于强制退出，在虚拟机的文件保存路径下生成了对
+    
+    </summary>
+    
+    
+      <category term="lck" scheme="http://Sebastian.com/tags/lck/"/>
+    
+  </entry>
+  
+</feed>
