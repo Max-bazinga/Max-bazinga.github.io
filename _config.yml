@@ -69,5 +69,5 @@ theme: yelee
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git 
-  repo: git@github.com:Max-bazinga/Max-bazinga.git 
+  repo: https://github.com/Max-bazinga/Max-bazinga.github.io.git 
   branch: master
