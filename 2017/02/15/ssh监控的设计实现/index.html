@@ -15,29 +15,32 @@
 
 
 
-<meta name="description" content="##调研目标旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。
-##实验环境准备一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。
-##实验步骤###实验一
+<meta name="description" content="调研目标旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。
 
-首先从A节点ssh到B节点，A-&amp;gt;B,在B节点的/v">
+实验环境准备一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。
+
+实验步骤实验一
+首先从A节点ssh到B节点，A-&amp;gt;B,在B节点的/var/log/s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh监控的设计实现">
 <meta property="og:url" content="http://Sebastian.com/2017/02/15/ssh监控的设计实现/index.html">
 <meta property="og:site_name" content="Sebastian">
-<meta property="og:description" content="##调研目标旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。
-##实验环境准备一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。
-##实验步骤###实验一
+<meta property="og:description" content="调研目标旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。
 
-首先从A节点ssh到B节点，A-&amp;gt;B,在B节点的/v">
+实验环境准备一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。
+
+实验步骤实验一
+首先从A节点ssh到B节点，A-&amp;gt;B,在B节点的/var/log/s">
 <meta property="og:image" content="http://i1.piimg.com/567571/caa1b024c3929075.png">
-<meta property="og:updated_time" content="2017-02-15T10:00:18.852Z">
+<meta property="og:updated_time" content="2017-02-15T10:15:13.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh监控的设计实现">
-<meta name="twitter:description" content="##调研目标旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。
-##实验环境准备一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。
-##实验步骤###实验一
+<meta name="twitter:description" content="调研目标旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。
 
-首先从A节点ssh到B节点，A-&amp;gt;B,在B节点的/v">
+实验环境准备一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。
+
+实验步骤实验一
+首先从A节点ssh到B节点，A-&amp;gt;B,在B节点的/var/log/s">
 <meta name="twitter:image" content="http://i1.piimg.com/567571/caa1b024c3929075.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -195,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh-advisor-design/">ssh advisor design</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/advisor/">advisor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
                     </div>
                 </section>
                 
@@ -300,7 +303,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh-advisor-design/">ssh advisor design</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/advisor/">advisor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design/">design</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -311,27 +314,38 @@
       
           
         <ol>
-<li>##调研目标<br>旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。</li>
-<li>##实验环境准备<br>一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。</li>
-<li><p>##实验步骤<br>###实验一</p>
-<ul>
-<li>首先从A节点ssh到B节点，A-&gt;B,在B节点的/var/log/secure文件会生成两条日志记录：<blockquote>
-<p> Feb  8 17:47:48 localhost sshd[12643]: Accepted password for root from 192.168.117.1 port 43171 ssh2<br> Feb  8 17:47:48 localhost sshd[12643]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
+<li><h2 id="调研目标"><a href="#调研目标" class="headerlink" title="调研目标"></a>调研目标</h2><p>旨在通过汇总集群中主机间的ssh连接信息，从而形成清晰的集群ssh连接托普图。</p>
+</li>
+<li><h2 id="实验环境准备"><a href="#实验环境准备" class="headerlink" title="实验环境准备"></a>实验环境准备</h2><p>一台物理kylin3.5系统，两台虚拟机kylin3.0系统。hostname分别修改为A(192.168.117.1), B(192.168.117.133), C（192.168.117.134）。</p>
+</li>
+<li><h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><ul>
+<li><p>首先从A节点ssh到B节点，A-&gt;B,在B节点的/var/log/secure文件会生成两条日志记录：</p>
+<blockquote>
+<p> Feb  8 17:47:48 localhost sshd[12643]: Accepted password for root from 192.168.117.1 port 43171 ssh2<br>Feb  8 17:47:48 localhost sshd[12643]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
 </blockquote>
 </li>
-<li>然后再ssh到C节点，A-&gt;B-&gt;C，在C节点的/var/log/secure文件会生成以下两条日志记录：<blockquote>
-<p> Feb  8 17:59:48 localhost sshd[9918]: Accepted password for root from 192.168.117.133 port 45169 ssh2<br> Feb  8 17:59:48 localhost sshd[9918]: pam_unix(sshd:session): session opened for user root by (uid=0)<br>如果同时在B上ssh到C，即存在A-&gt;B-&gt;C,B-&gt;C两条链路，那么根据现有的信息无法判断真实的连接到C上的情况是A-&gt;B-&gt;C,B-&gt;C还是A-&gt;B,B-&gt;C,B-&gt;C。在/var/run/utmp文件中保存有用户的登陆信息以及当前正在进行的操作，该文件是一个二进制文件，使用w命令能够解析获取到文件信息。例如存在一条A-&gt;B-&gt;C的链路，那么在B节点上通过w命令可以查看到如下信息：<br>USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT</p>
+<li><p>然后再ssh到C节点，A-&gt;B-&gt;C，在C节点的/var/log/secure文件会生成以下两条日志记录：</p>
+<blockquote>
+<p> Feb  8 17:59:48 localhost sshd[9918]: Accepted password for root from 192.168.117.133 port 45169 ssh2<br>Feb  8 17:59:48 localhost sshd[9918]: pam_unix(sshd:session): session opened for user root by (uid=0)</p>
 </blockquote>
+<p>如果同时在B上ssh到C，即存在A-&gt;B-&gt;C,B-&gt;C两条链路，那么根据现有的信息无法判断真实的连接到C上的情况是A-&gt;B-&gt;C,B-&gt;C还是A-&gt;B,B-&gt;C,B-&gt;C。在/var/run/utmp文件中保存有用户的登陆信息以及当前正在进行的操作，该文件是一个二进制文件，使用w命令能够解析获取到文件信息。例如存在一条A-&gt;B-&gt;C的链路，那么在B节点上通过w命令可以查看到如下信息：</p>
 </li>
 </ul>
 <blockquote>
-<p>root     pts/0    192.168.117.1    09:34    1:51   0.02s  0.00s ssh root@192.168.117.134<br>由此可以确定一个节点的两端连接节点。<br>###实验二</p>
-<ul>
-<li>存在A，B，C，D四个节点，其中A节点上从w命令中获取到存在A-&gt;A, A-&gt;B两条链路；B节点上存在A-&gt;B-&gt;C,B-&gt;C两条链路；C节点上存在B-&gt;C,C-&gt;D,B-&gt;C-&gt;D三条链路；D节点上存在C-&gt;D,C-&gt;D两条链路。从而根据以上的信息，可以推断出该四个节点的ssh拓扑关系如下：<br><img src="http://i1.piimg.com/567571/caa1b024c3929075.png" alt=""><font color="red">其中B-&gt;C-&gt;D链路无法确定是A-&gt;B-&gt;C-&gt;D还是B-&gt;C-&gt;D。</font></li>
-</ul>
+<p> USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT<br> root     pts/0    192.168.117.1    09:34    1:51   0.02s  0.00s ssh root@192.168.117.134</p>
 </blockquote>
+<p>可以确定一个节点的两端连接节点。</p>
+<h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><ul>
+<li>存在A，B，C，D四个节点，其中A节点上从w命令中获取到存在A-&gt;A, A-&gt;B两条链路；B节点上存在A-&gt;B-&gt;C,B-&gt;C两条链路；C节点上存在B-&gt;C,C-&gt;D,B-&gt;C-&gt;D三条链路；D节点上存在C-&gt;D,C-&gt;D两条链路。从而根据以上的信息，可以推断出该四个节点的ssh拓扑关系如下：<br><img src="http://i1.piimg.com/567571/caa1b024c3929075.png" alt=""></li>
+</ul>
 </li>
-<li>##算法实现<br>4.1 ###在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:</li>
+</ol>
+<p><font color="red">其中B-&gt;C-&gt;D链路无法确定是A-&gt;B-&gt;C-&gt;D还是B-&gt;C-&gt;D。</font></p>
+<ol>
+<li><h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><ul>
+<li><h3 id="在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果"><a href="#在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果" class="headerlink" title="在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:"></a>在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:</h3></li>
+</ul>
+</li>
 </ol>
 
       
@@ -344,7 +358,7 @@
         <p><span>本文标题:</span><a href="/2017/02/15/ssh监控的设计实现/">ssh监控的设计实现</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Sebastian</a></p>
         <p><span>发布时间:</span>2017-02-15, 16:57:54</p>
-        <p><span>最后更新:</span>2017-02-15, 18:00:18</p>
+        <p><span>最后更新:</span>2017-02-15, 18:15:13</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/15/ssh监控的设计实现/" title="ssh监控的设计实现">http://Sebastian.com/2017/02/15/ssh监控的设计实现/</a>
             <span class="copy-path" data-clipboard-text="原文: http://Sebastian.com/2017/02/15/ssh监控的设计实现/　　作者: Sebastian" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -358,6 +372,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/02/16/test/">
+                    test
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -374,7 +394,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#调研目标"><span class="toc-number">1.</span> <span class="toc-text">调研目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验环境准备"><span class="toc-number">2.</span> <span class="toc-text">实验环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验步骤"><span class="toc-number">3.</span> <span class="toc-text">实验步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验一"><span class="toc-number">3.1.</span> <span class="toc-text">实验一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验二"><span class="toc-number">3.2.</span> <span class="toc-text">实验二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法实现"><span class="toc-number">4.</span> <span class="toc-text">算法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果"><span class="toc-number">4.1.</span> <span class="toc-text">在每台机器上跑一个agent，定时获取该机器w指令的结果上报到master服务器，存在以下两种格式的链路结果:</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -430,7 +450,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/02/16/test/" title="上一篇: test">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -442,7 +464,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/ssh监控的设计实现/">ssh监控的设计实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/markdown简明教程/">markdown简明教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/虚拟机启动失败/">虚拟机启动失败</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/ssh监控的设计实现/">ssh监控的设计实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/markdown简明教程/">markdown简明教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/虚拟机启动失败/">虚拟机启动失败</a></li></ul>
 
 
 
