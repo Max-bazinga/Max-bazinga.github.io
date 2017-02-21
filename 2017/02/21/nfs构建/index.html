@@ -15,12 +15,40 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sebastian">
-<meta property="og:url" content="http://Sebastian.com/tags/lck/index.html">
+<meta name="description" content="NFS (Network File Service)
+ NFS用于Linux系统之间的文件共享
+ (1) 实验环境，主机Ubuntu 9.04，VMware 6.5，虚拟机Ubuntu 9.04
+ (2) 在主机上安装nfs服务软件，因为Ubuntu默认是没有安装的
+
+$sudo aptitude install nfs-kernel-server
+
+ 或使用新立德包管理器安装
+ (3) 在虚拟">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nfs构建">
+<meta property="og:url" content="http://Sebastian.com/2017/02/21/nfs构建/index.html">
 <meta property="og:site_name" content="Sebastian">
+<meta property="og:description" content="NFS (Network File Service)
+ NFS用于Linux系统之间的文件共享
+ (1) 实验环境，主机Ubuntu 9.04，VMware 6.5，虚拟机Ubuntu 9.04
+ (2) 在主机上安装nfs服务软件，因为Ubuntu默认是没有安装的
+
+$sudo aptitude install nfs-kernel-server
+
+ 或使用新立德包管理器安装
+ (3) 在虚拟">
+<meta property="og:updated_time" content="2017-02-21T00:34:19.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sebastian">
+<meta name="twitter:title" content="nfs构建">
+<meta name="twitter:description" content="NFS (Network File Service)
+ NFS用于Linux系统之间的文件共享
+ (1) 实验环境，主机Ubuntu 9.04，VMware 6.5，虚拟机Ubuntu 9.04
+ (2) 在主机上安装nfs服务软件，因为Ubuntu默认是没有安装的
+
+$sudo aptitude install nfs-kernel-server
+
+ 或使用新立德包管理器安装
+ (3) 在虚拟">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +80,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: lck | Sebastian</title>
+<title>nfs构建 | Sebastian</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,9 +90,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -252,56 +280,197 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-nfs构建" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/15/虚拟机启动失败/" class="archive-article-date">
-      <time datetime="2017-02-15T07:47:15.000Z" itemprop="datePublished">02-15</time>
+    <div class="article-meta">
+      <a href="/2017/02/21/nfs构建/" class="article-date">
+      <time datetime="2017-02-21T00:31:34.000Z" itemprop="datePublished">2017-02-21</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/15/虚拟机启动失败/">虚拟机启动失败</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nfs构建
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lck/">lck</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nfs/">nfs</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li><p>NFS (Network File Service)</p>
+<p> NFS用于Linux系统之间的文件共享</p>
+<p> (1) 实验环境，主机Ubuntu 9.04，VMware 6.5，虚拟机Ubuntu 9.04</p>
+<p> (2) 在主机上安装nfs服务软件，因为Ubuntu默认是没有安装的</p>
+<blockquote>
+<p>$sudo aptitude install nfs-kernel-server</p>
+</blockquote>
+<p> 或使用新立德包管理器安装</p>
+<p> (3) 在虚拟机上安装nfs客户端</p>
+<p> $sudo apt-get install nfs-common</p>
+<p> (4) 假设虚拟机使用的是桥接，IP地址为10.1.60.34即和主机在一个网段内。</p>
+<p> (5) 修改nfs配置文件/etc/exports，添加如下一行</p>
+<blockquote>
+<p>/home/yourname/sharedir 10.1.60.34(rw,sync,no_root_squash)</p>
+</blockquote>
+<p> 第一个参数是你要让客户机访问的目录，第二个是你允许的主机IP，最后的（）内是访问控制方式。</p>
+<p> (6) 注意，上面的主机IP不能使用＊来通配，否则在客户机上会出现访问拒绝，但是如果我们要设置局域网访问呢？怎么办，使用子网掩码例如：10.1.60.0/255.255.254.0即可让10.1.60.<em>和10.1.61.</em>都可以访问,还可以使用10.1.60/23这种方式类确定子网。</p>
+<p> (7) 在主机上启动NFS服务</p>
+<p> 测试配置文件</p>
+<blockquote>
+<p>$ sudo  exportfs  -r</p>
+<p>$sudo /etc/init.d/portmap start</p>
+<p>$sudo /etc/init.d/nfs-kernel-server start</p>
+</blockquote>
+<p> (8) 在客户端连接主机</p>
+<blockquote>
+<p>$sudo mount 主机IP:/home/yourname/sharedir ~/nfsshare</p>
+</blockquote>
+<p> 注意,nfsshare必须先存在。</p>
+<p> (9) 我们还可以设置允许的主机</p>
+<p> 修改/etc/hosts.allow即可，其实不用修改，只要在/etc/exports中指明了主机就可以了</p>
+</li>
+</ol>
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/21/nfs构建/">nfs构建</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Sebastian</a></p>
+        <p><span>发布时间:</span>2017-02-21, 08:31:34</p>
+        <p><span>最后更新:</span>2017-02-21, 08:34:19</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/21/nfs构建/" title="nfs构建">http://Sebastian.com/2017/02/21/nfs构建/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://Sebastian.com/2017/02/21/nfs构建/　　作者: Sebastian" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/20/近来的一些胡思乱想/">
+                    近来的一些胡思乱想
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"nfs构建　| Sebastian　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/20/近来的一些胡思乱想/" title="下一篇: 近来的一些胡思乱想">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/nfs构建/">nfs构建</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/近来的一些胡思乱想/">近来的一些胡思乱想</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/QEMU学习/">QEMU学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/celery源码阅读/">celery源码阅读</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/16/celery安装指南/">celery安装指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/ssh监控的设计实现/">ssh监控的设计实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/markdown简明教程/">markdown简明教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/虚拟机启动失败/">虚拟机启动失败</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

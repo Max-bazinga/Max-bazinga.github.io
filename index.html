@@ -182,7 +182,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/advisor/">advisor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/celery/">celery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/advisor/">advisor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/celery/">celery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nfs/">nfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
                     </div>
                 </section>
                 
@@ -258,6 +258,232 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-nfs构建" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/21/nfs构建/" class="article-date">
+      <time datetime="2017-02-21T00:31:34.000Z" itemprop="datePublished">2017-02-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/21/nfs构建/">nfs构建</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li><p>NFS (Network File Service)</p>
+<p> NFS用于Linux系统之间的文件共享</p>
+<p> (1) 实验环境，主机Ubuntu 9.04，VMware 6.5，虚拟机Ubuntu 9.04</p>
+<p> (2) 在主机上安装nfs服务软件，因为Ubuntu默认是没有安装的</p>
+<blockquote>
+<p>$sudo aptitude install nfs-kernel-server</p>
+</blockquote>
+<p> 或使用新立德包管理器安装</p>
+<p> (3) 在虚拟机上安装nfs客户端</p>
+<p> $sudo apt-get install nfs-common</p>
+<p> (4) 假设虚拟机使用的是桥接，IP地址为10.1.60.34即和主机在一个网段内。</p>
+<p> (5) 修改nfs配置文件/etc/exports，添加如下一行</p>
+<blockquote>
+<p>/home/yourname/sharedir 10.1.60.34(rw,sync,no_root_squash)</p>
+</blockquote>
+<p> 第一个参数是你要让客户机访问的目录，第二个是你允许的主机IP，最后的（）内是访问控制方式。</p>
+<p> (6) 注意，上面的主机IP不能使用＊来通配，否则在客户机上会出现访问拒绝，但是如果我们要设置局域网访问呢？怎么办，使用子网掩码例如：10.1.60.0/255.255.254.0即可让10.1.60.<em>和10.1.61.</em>都可以访问,还可以使用10.1.60/23这种方式类确定子网。</p>
+<p> (7) 在主机上启动NFS服务</p>
+<p> 测试配置文件</p>
+<blockquote>
+<p>$ sudo  exportfs  -r</p>
+<p>$sudo /etc/init.d/portmap start</p>
+<p>$sudo /etc/init.d/nfs-kernel-server start</p>
+</blockquote>
+<p> (8) 在客户端连接主机</p>
+<blockquote>
+<p>$sudo mount 主机IP:/home/yourname/sharedir ~/nfsshare</p>
+</blockquote>
+<p> 注意,nfsshare必须先存在。</p>
+<p> (9) 我们还可以设置允许的主机</p>
+<p> 修改/etc/hosts.allow即可，其实不用修改，只要在/etc/exports中指明了主机就可以了</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nfs/">nfs</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-近来的一些胡思乱想" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/20/近来的一些胡思乱想/" class="article-date">
+      <time datetime="2017-02-20T00:39:17.000Z" itemprop="datePublished">2017-02-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/近来的一些胡思乱想/">近来的一些胡思乱想</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <pre><code>今天已是17年工作的第三周了，
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-QEMU学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/17/QEMU学习/" class="article-date">
+      <time datetime="2017-02-17T03:37:27.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/QEMU学习/">QEMU学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="什么是QEMU？"><a href="#什么是QEMU？" class="headerlink" title="什么是QEMU？"></a>什么是QEMU？</h1><p>  QEMU是一个能够模拟处理器的自由软件。<br>  QEMU可以虚拟出不同架构的虚拟机，如在X86平台上可以虚拟出power机器。QEMU本身可以不以来于KVM，但是如果有KVM的存在并且硬件(处理器)支持比如Intel VT功能，那么QEMU在对处理器虚拟化着一块可以利用KVM提供的功能来提升性能。</p>
+<h1 id="QEMU与KVM的却别？"><a href="#QEMU与KVM的却别？" class="headerlink" title="QEMU与KVM的却别？"></a>QEMU与KVM的却别？</h1><p>  KVM是集成到Linux内核的Hypervisor，是X86架构且支持虚拟化技术的Linux的全虚拟化解决方案。从存在形式看，KVM是两个内核模块kvm.ko和kvm_intel.ko，这两个模块用来实现CPU的虚拟化。如果让用户在KVM上完成一个虚拟机相关的操作，显然需要用户空间的东西，同时还包括IO虚拟化，所以KVM的解决方案借鉴了QEMU的东西并做了一定的修改，形成了自己的KVM虚拟机工具集和IO虚拟化的支持，也就是所谓的qemu-kvm。<br>  QEMU是个独立的虚拟化解决方案，从这个角度它并不依赖KVM。而KVM是另一套虚拟化解决方案，不过因为这个方案实际上只实现了内核中对处理器虚拟化特性的支持，换言之，它缺乏设备虚拟化以及相应的用户空间管理虚拟化的工具，所以它借鉴了QEMU的代码并加以精简，连同KVM一起构成了另一个独立的虚拟化解决方案，称之为：qemu-kvm。</p>
+<h1 id="创建虚拟系统"><a href="#创建虚拟系统" class="headerlink" title="创建虚拟系统"></a>创建虚拟系统</h1><ol>
+<li><p>创建硬盘镜像<br>除非直接从CD-ROM 或者网络引导并且不安装系统到本地，运行QEMU时都需要硬盘镜像。硬盘镜像是一个文件，存储虚拟机硬盘上的内容。一个硬盘镜像可能是raw镜像，和客户机器上看到的内容一模一样，主机上占用的空间客户机上的大小一样。另一种方式是qcow2格式，仅当客户系统实际写入内容的时候，才会分配镜像空间。对客户机器来说，硬盘大小是完整大小，但是在主机系统上实际仅占用很小的空间。<br>使用如下命令创建镜像：</p>
+<blockquote>
+<p>qemu-img create /path/to/xp.img 10G</p>
+</blockquote>
+<p>创建虚拟机：</p>
+<blockquote>
+<p>qemu-kvm -boot order=dc -vga qxl \</p>
+<pre><code>-spice port=3001,disable-ticketing -soundhw ac97 \
+-device virtio-serial -chardev spicevmc,id=vdagent,debug=0,name=vdagent \
+-device virtserialport,chardev=vdagent,name=com.redhat.spice.0 \
+-cdrom /path/to/your.iso /path/to/your.img
+</code></pre><p>可能遇到的告警信息：<br>GLib-WARNING **: gmem.c:482: custom memory allocation vtable not supported<br>  可以忽略该告警信息，这是glib之前存在一个bug，最新版本已经修复了该bug。</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QEMU/">QEMU</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-celery源码阅读" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -529,7 +755,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="markdown简明语法教程-（https-www-zybuluo-com-cmd-）"><a href="#markdown简明语法教程-（https-www-zybuluo-com-cmd-）" class="headerlink" title="[markdown简明语法教程]（https://www.zybuluo.com/cmd/）"></a>[markdown简明语法教程]（<a href="https://www.zybuluo.com/cmd/）" target="_blank" rel="external">https://www.zybuluo.com/cmd/）</a></h3>
+        <ol>
+<li><p>标题<br>#markdown简明教程<br>##markdown简明教程<br>###markdown简明教程<br>####markdown简明教程</p>
+<h1 id="markdown简明教程"><a href="#markdown简明教程" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h1><h2 id="markdown简明教程-1"><a href="#markdown简明教程-1" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h2><h3 id="markdown简明教程-2"><a href="#markdown简明教程-2" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h3><h4 id="markdown简明教程-3"><a href="#markdown简明教程-3" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h4></li>
+</ol>
+
       
     </div>
     
