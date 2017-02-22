@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Sebastian.com/"/>
-  <updated>2017-02-21T00:34:19.228Z</updated>
+  <updated>2017-02-22T01:18:00.591Z</updated>
   <id>http://Sebastian.com/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu进入恢复模式</title>
+    <link href="http://Sebastian.com/2017/02/22/ubuntu%E8%BF%9B%E5%85%A5%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://Sebastian.com/2017/02/22/ubuntu进入恢复模式/</id>
+    <published>2017-02-22T01:13:35.000Z</published>
+    <updated>2017-02-22T01:18:00.591Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>重起机器，然后迅速按shift键，进入grub引导界面</li>
+<li>选择advance模式，回车</li>
+<li>ctrl+x进入系统</li>
+<li>选择root shell界面</li>
+<li><p>此时的文件系统是只读的，需要以读写的方式重新挂在根分区</p>
+<blockquote>
+<p>mount -o remount,rw /</p>
+</blockquote>
+</li>
+<li><p>使用下面的命令恢复之前修改的sudoers文件的权限</p>
+<blockquote>
+<p>chmod 0440 /etc/sudoers</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;重起机器，然后迅速按shift键，进入grub引导界面&lt;/li&gt;
+&lt;li&gt;选择advance模式，回车&lt;/li&gt;
+&lt;li&gt;ctrl+x进入系统&lt;/li&gt;
+&lt;li&gt;选择root shell界面&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;此时的文件系统是只读的，需要以读写的方式重新挂
+    
+    </summary>
+    
+    
+      <category term="ubuntu" scheme="http://Sebastian.com/tags/ubuntu/"/>
+    
+      <category term="recovery" scheme="http://Sebastian.com/tags/recovery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何成为openstack工程师</title>
+    <link href="http://Sebastian.com/2017/02/21/%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BAopenstack%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    <id>http://Sebastian.com/2017/02/21/如何成为openstack工程师/</id>
+    <published>2017-02-21T08:26:15.000Z</published>
+    <updated>2017-02-21T08:35:55.351Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/chao_beyond/article/details/41259077" target="_blank" rel="external">如何成为openstack工程师</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/chao_beyond/article/details/41259077&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何成为openstack工程师&lt;/a&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="openstack" scheme="http://Sebastian.com/tags/openstack/"/>
+    
+  </entry>
   
   <entry>
     <title>nfs构建</title>
@@ -273,19 +338,15 @@
     <link href="http://Sebastian.com/2017/02/15/markdown%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>http://Sebastian.com/2017/02/15/markdown简明教程/</id>
     <published>2017-02-15T08:17:35.000Z</published>
-    <updated>2017-02-17T02:04:50.030Z</updated>
+    <updated>2017-02-21T08:36:56.864Z</updated>
     
-    <content type="html"><![CDATA[<ol>
-<li><p>标题<br>#markdown简明教程<br>##markdown简明教程<br>###markdown简明教程<br>####markdown简明教程</p>
-<h1 id="markdown简明教程"><a href="#markdown简明教程" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h1><h2 id="markdown简明教程-1"><a href="#markdown简明教程-1" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h2><h3 id="markdown简明教程-2"><a href="#markdown简明教程-2" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h3><h4 id="markdown简明教程-3"><a href="#markdown简明教程-3" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h4></li>
-</ol>
+    <content type="html"><![CDATA[<p><a href="http://www.jianshu.com/p/q81RER/" target="_blank" rel="external">markdown简明教程</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;标题&lt;br&gt;#markdown简明教程&lt;br&gt;##markdown简明教程&lt;br&gt;###markdown简明教程&lt;br&gt;####markdown简明教程&lt;/p&gt;
-&lt;h1 id=&quot;markdown简明教程&quot;&gt;&lt;a href=&quot;#markdown简明教程&quot; c
+      &lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/q81RER/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;markdown简明教程&lt;/a&gt;&lt;/p&gt;
+
     
     </summary>
     

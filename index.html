@@ -182,7 +182,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/advisor/">advisor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/celery/">celery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nfs/">nfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/advisor/">advisor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/celery/">celery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lck/">lck</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nfs/">nfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openstack/">openstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recovery/">recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
                     </div>
                 </section>
                 
@@ -258,6 +258,141 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-ubuntu进入恢复模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/22/ubuntu进入恢复模式/" class="article-date">
+      <time datetime="2017-02-22T01:13:35.000Z" itemprop="datePublished">2017-02-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/22/ubuntu进入恢复模式/">ubuntu进入恢复模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ol>
+<li>重起机器，然后迅速按shift键，进入grub引导界面</li>
+<li>选择advance模式，回车</li>
+<li>ctrl+x进入系统</li>
+<li>选择root shell界面</li>
+<li><p>此时的文件系统是只读的，需要以读写的方式重新挂在根分区</p>
+<blockquote>
+<p>mount -o remount,rw /</p>
+</blockquote>
+</li>
+<li><p>使用下面的命令恢复之前修改的sudoers文件的权限</p>
+<blockquote>
+<p>chmod 0440 /etc/sudoers</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recovery/">recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-如何成为openstack工程师" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/21/如何成为openstack工程师/" class="article-date">
+      <time datetime="2017-02-21T08:26:15.000Z" itemprop="datePublished">2017-02-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/21/如何成为openstack工程师/">如何成为openstack工程师</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="http://blog.csdn.net/chao_beyond/article/details/41259077" target="_blank" rel="external">如何成为openstack工程师</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openstack/">openstack</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-nfs构建" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -755,10 +890,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li><p>标题<br>#markdown简明教程<br>##markdown简明教程<br>###markdown简明教程<br>####markdown简明教程</p>
-<h1 id="markdown简明教程"><a href="#markdown简明教程" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h1><h2 id="markdown简明教程-1"><a href="#markdown简明教程-1" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h2><h3 id="markdown简明教程-2"><a href="#markdown简明教程-2" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h3><h4 id="markdown简明教程-3"><a href="#markdown简明教程-3" class="headerlink" title="markdown简明教程"></a>markdown简明教程</h4></li>
-</ol>
+        <p><a href="http://www.jianshu.com/p/q81RER/" target="_blank" rel="external">markdown简明教程</a></p>
 
       
     </div>
